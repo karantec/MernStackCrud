@@ -10,7 +10,7 @@ function App() {
   const [list,setList]=useState([]);
   
 const postData=async()=>{
-  const result =await axios.post("http://localhost:8000/post",{
+  const result =await axios.post("https://mernstacrud.onrender.com//post",{
  Taskname:Taskname, TaskDone:TaskDone});
     console.log(result.data);
     setList([...list,{_id:result.data._id,Taskname:Taskname,TaskDone:TaskDone}])
@@ -20,7 +20,7 @@ const postData=async()=>{
 const updatedData=async(id)=>{
   const newtask=prompt("Enter new task");
   const newDone=prompt("Enter new done");
-  const data=axios.put(`http://localhost:8000/update/${id}`,{
+  const data=axios.put(`https://mernstacrud.onrender.com/update/${id}`,{
     Taskname:newtask, TaskDone:newDone});
     console.log(data);
     setList(list.map((val)=>{
@@ -28,7 +28,7 @@ const updatedData=async(id)=>{
     }))
 }
 const deleteData=async(id)=>{
-  const data=await axios.delete(`http://localhost:8000/delete/${id}`,{
+  const data=await axios.delete(`https://mernstacrud.onrender.com/delete/${id}`,{
     Taskname:Taskname, TaskDone:TaskDone});
    console.log(data);
    setList(list.filter((val)=>{
@@ -36,7 +36,7 @@ const deleteData=async(id)=>{
 }
 useEffect(()=>{
   const getData=async()=>{
-    const result=await axios.get("http://localhost:8000/get");
+    const result=await axios.get("https://mernstacrud.onrender.com/get");
     console.log(result.data);
     setList(result.data);
   }
